@@ -89,20 +89,11 @@ function renderRows(result) {
     }
 
     if (row.gap) {
-      const nextBlock = blocks[row.gap.beforeOriginalIndex];
+      gapInfo.hidden = false;
 
-      if (nextBlock) {
-        const nextGapInfo = nextBlock.querySelector(".gap-info");
-        const nextGapDays = nextBlock.querySelector(".gap-days");
-        const nextGapReset = nextBlock.querySelector(".gap-reset");
+      gapDays.textContent = `${row.gap.absenceDays.toLocaleString()} day${row.gap.absenceDays === 1 ? "" : "s"} outside U.S.`;
 
-        nextGapInfo.hidden = false;
-
-        nextGapDays.textContent =
-          `${row.gap.absenceDays.toLocaleString()} day${row.gap.absenceDays === 1 ? "" : "s"} outside U.S.`;
-
-        nextGapReset.hidden = !row.gap.resets;
-      }
+      gapReset.hidden = !row.gap.resets;
     }
   });
 }
