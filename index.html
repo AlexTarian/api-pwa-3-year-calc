@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H-2A 3-Year Limit Calculator</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <main class="page-shell">
+    <section class="calculator-card">
+      <header class="calculator-header">
+        <div class="icon-badge">3Y</div>
+
+        <div>
+          <h1>3-Year Limit Calculator</h1>
+          <p>Track a worker's time in the United States and estimate how much time remains before reaching the H-2A three-year limit.</p>
+        </div>
+      </header>
+
+      <section class="stays-section">
+        <div class="section-heading">
+          <div>
+            <h2>Worker's U.S. Stays</h2>
+            <p class="helper-text">
+              Enter each arrival and departure. Leave the departure blank if the worker is still in the United States.
+            </p>
+          </div>
+        </div>
+
+        <div class="stay-header" aria-hidden="true">
+          <span>Arrival Date</span>
+          <span>Departure Date</span>
+          <span>Days</span>
+          <span></span>
+        </div>
+
+        <div id="stays-list" class="stays-list"></div>
+
+        <button id="add-stay-button" class="secondary-button add-stay-button" type="button">
+          + Add Another Stay
+        </button>
+      </section>
+
+      <div id="validation-summary" class="error-message" role="alert" hidden></div>
+
+      <section id="summary-card" class="summary-card">
+        <div class="summary-eyebrow">Current 3-Year Period</div>
+
+        <div class="summary-grid">
+          <div class="summary-stat">
+            <span>Days Accrued</span>
+            <strong id="days-accrued">0</strong>
+          </div>
+
+          <div class="summary-stat">
+            <span>Days Remaining</span>
+            <strong id="days-remaining">1095</strong>
+          </div>
+
+          <div class="summary-stat">
+            <span>Limit</span>
+            <strong>1,095</strong>
+          </div>
+        </div>
+
+        <div id="reset-summary" class="reset-summary" hidden>
+          <span class="reset-icon">✓</span>
+
+          <div>
+            <strong>3-year clock reset</strong>
+            <p id="reset-summary-text"></p>
+          </div>
+        </div>
+
+        <p class="result-note">
+          A continuous absence from the United States of at least 60 days resets the current three-year period.
+        </p>
+      </section>
+    </section>
+  </main>
+
+  <template id="stay-row-template">
+    <div class="stay-block">
+      <div class="stay-row">
+        <div class="field">
+          <label class="mobile-label">Arrival Date</label>
+          <input class="arrival-input" type="date">
+        </div>
+
+        <div class="field">
+          <label class="mobile-label">Departure Date</label>
+          <input class="departure-input" type="date">
+        </div>
+
+        <div class="day-count">
+          <span class="mobile-label">Days</span>
+          <strong class="days-value">—</strong>
+        </div>
+
+        <button class="remove-button" type="button" aria-label="Remove stay" title="Remove stay">
+          ×
+        </button>
+      </div>
+
+      <div class="row-error" hidden></div>
+
+      <div class="gap-info" hidden>
+        <div class="gap-line"></div>
+
+        <div class="gap-text">
+          <span class="gap-days"></span>
+          <span class="gap-reset" hidden>✓ 3-year limit reset</span>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
