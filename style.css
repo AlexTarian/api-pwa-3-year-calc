@@ -6,6 +6,25 @@
   text-rendering: optimizeLegibility;
 }
 
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+input,
+button,
+select,
+textarea {
+  max-width: 100%;
+}
+
+.field,
+.input-suffix,
+.stay-row > * {
+  min-width: 0;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -142,7 +161,10 @@ h2 {
 }
 
 .field input {
+  display: block;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   height: 44px;
   padding: 0 12px;
   color: #272d35;
@@ -404,9 +426,19 @@ h2 {
   }
 
   .stay-row {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 12px;
     padding: 14px;
+  }
+
+  .stay-row > * {
+    min-width: 0;
+  }
+
+  .field input {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .mobile-label {
