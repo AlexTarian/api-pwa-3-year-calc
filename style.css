@@ -234,13 +234,7 @@ h2 {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-  padding: 7px 0;
-}
-
-.gap-line {
-  width: 1px;
-  height: 14px;
-  background: #cfd7e1;
+  padding: 10px 0;
 }
 
 .gap-text {
