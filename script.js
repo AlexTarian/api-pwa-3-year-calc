@@ -89,11 +89,26 @@ function renderRows(result) {
     }
 
     if (row.gap) {
-      gapInfo.hidden = false;
+      const firstIndex = row.gap.previousOriginalIndex;
+      const secondIndex = row.gap.beforeOriginalIndex;
+      const areAdjacent = Math.abs(firstIndex - secondIndex) === 1;
 
-      gapDays.textContent = `${row.gap.absenceDays.toLocaleString()} day${row.gap.absenceDays === 1 ? "" : "s"} outside U.S.`;
+      if (areAdjacent) {
+        const displayIndex = Math.min(firstIndex, secondIndex);
+        const displayBlock = blocks[displayIndex];
 
-      gapReset.hidden = !row.gap.resets;
+        if (displayBlock) {
+          const displayGapInfo = displayBlock.querySelector(".gap-info");
+          const displayGapDays = displayBlock.querySelector(".gap-days");
+          const displayGapReset = displayBlock.querySelector(".gap-reset");
+
+          displayGapInfo.hidden = false;
+
+          displayGapDays.textContent = `${row.gap.absenceDays.toLocaleString()} day${row.gap.absenceDays === 1 ? "" : "s"} outside U.S.`;
+
+          displayGapReset.hidden = !row.gap.resets;
+        }
+      }
     }
   });
 }
